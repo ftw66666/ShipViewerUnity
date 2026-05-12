@@ -1,0 +1,100 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Style src="project://database/Assets/UI/ShipViewerHUD.uss"/>
+    <ui:Style src="project://database/Assets/UI/ShipViewerScroller.uss"/>
+    <ui:VisualElement name="ShipViewerHUD" class="shipviewer-hud">
+        <ui:VisualElement name="TopToolbar" class="hud-panel top-toolbar">
+            <ui:VisualElement class="brand-block">
+                <ui:Label name="AppTitle" text="工业模型查看器" class="brand-title"/>
+                <ui:Label name="AppSubtitle" text="ShipViewer v1.0" class="brand-subtitle"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="toolbar-actions">
+                <ui:Button name="OpenButton" text="打开" class="hud-button hud-button-secondary"/>
+                <ui:VisualElement name="ViewModeGroup" class="view-mode-group">
+                    <ui:Button name="FrontViewButton" text="前视" class="hud-button hud-button-secondary view-mode-button"/>
+                    <ui:Button name="TopViewButton" text="俯视" class="hud-button hud-button-secondary view-mode-button"/>
+                    <ui:Button name="RightViewButton" text="右视" class="hud-button hud-button-secondary view-mode-button"/>
+                    <ui:Button name="IsoViewButton" text="等轴测" class="hud-button hud-button-secondary view-mode-button view-mode-button-active"/>
+                </ui:VisualElement>
+                <ui:Button name="ResetButton" text="重置" class="hud-button hud-button-secondary"/>
+                <ui:Button name="WireframeButton" text="线框" class="hud-button hud-button-secondary"/>
+                <ui:Button name="DebugButton" text="调试" class="hud-button hud-button-secondary"/>
+                <ui:Button name="PerformanceButton" text="性能" class="hud-button hud-button-secondary"/>
+                <ui:Button name="AnimationButton" text="动画" class="hud-button hud-button-primary"/>
+                <ui:Button name="ScreenshotButton" text="截图" class="hud-button hud-button-secondary"/>
+                <ui:Button name="ClearButton" text="清空" class="hud-button hud-button-secondary"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MainLayout" class="main-layout">
+            <ui:VisualElement name="DamageTreePanel" class="hud-panel side-panel left-panel">
+                <ui:VisualElement class="panel-header">
+                    <ui:Label text="损伤树" class="panel-title"/>
+                    <ui:Label name="TreeCountBadge" text="0 节点" class="badge"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="DamageTreeSummary" class="damage-tree-summary">
+                    <ui:Label name="TreeRootBadge" text="根 0" class="tree-stat-chip"/>
+                    <ui:Label name="TreeLeafBadge" text="叶 0" class="tree-stat-chip"/>
+                    <ui:Label name="TreeLinkedBadge" text="详情 0" class="tree-stat-chip"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="DamageTreeContainer" class="tree-container"/>
+                <ui:Label name="DamageTreeHint" text="点击节点后触发模型 Focus，并更新右侧信息。" class="hint-text"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="ModelViewportOverlay" class="model-viewport-overlay">
+                <ui:VisualElement name="SelectionToast" class="selection-toast">
+                    <ui:Label text="当前选择" class="toast-label"/>
+                    <ui:Label name="CurrentSelectionLabel" text="未选择模型或损伤节点" class="toast-value"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="InfoPanel" class="hud-panel side-panel right-panel">
+                <ui:VisualElement class="panel-header">
+                    <ui:Label text="信息展示" class="panel-title"/>
+                    <ui:Label name="InfoSourceBadge" text="等待选择" class="badge"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="device-hero">
+                    <ui:Image name="DeviceImage" class="device-image"/>
+                    <ui:VisualElement class="device-title-group">
+                        <ui:Label name="DeviceNameLabel" text="未选择节点" class="device-title"/>
+                        <ui:Label name="DeviceIdLabel" text="节点ID：--" class="device-subtitle"/>
+                        <ui:Label name="ParentNodeValue" text="父节点ID：--" class="device-subtitle device-parent-id"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:ScrollView name="InfoScroll" class="info-scroll shipviewer-scrollable" vertical-scroller-visibility="AlwaysVisible" horizontal-scroller-visibility="Hidden">
+                    <ui:VisualElement class="info-grid">
+                        <ui:VisualElement name="BasicSpecCard" class="info-row info-card-basic-spec">
+                            <ui:Label text="基础参数" class="info-label"/>
+                            <ui:VisualElement class="spec-grid">
+                                <ui:VisualElement class="spec-item">
+                                    <ui:Label text="材质" class="spec-label"/>
+                                    <ui:Label name="MaterialValue" text="--" class="spec-value"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement class="spec-item">
+                                    <ui:Label text="厚度" class="spec-label"/>
+                                    <ui:Label name="ThicknessValue" text="--" class="spec-value"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement class="spec-item">
+                                    <ui:Label text="尺寸" class="spec-label"/>
+                                    <ui:Label name="SizeValue" text="--" class="spec-value"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="FunctionDescriptionCard" class="info-row info-row-tall info-card-function">
+                            <ui:Label text="功能描述" class="info-label"/>
+                            <ui:Label name="FunctionValue" text="--" class="info-value body-copy"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:ScrollView>
+                <ui:Label name="InfoEmptyState" text="数据来自 device-catalog.json；未匹配时会显示空状态，不中断交互。" class="hint-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="PerformanceBar" class="hud-panel performance-bar">
+            <ui:Label name="LoadStatusLabel" text="准备加载 UI 数据" class="status-text"/>
+            <ui:VisualElement class="performance-metrics">
+                <ui:Label name="FpsValue" text="FPS --" class="metric-badge"/>
+                <ui:Label name="FrameTimeValue" text="Frame -- ms" class="metric-badge"/>
+                <ui:Label name="VertexValue" text="顶点 --" class="metric-badge"/>
+                <ui:Label name="TriangleValue" text="面片 --" class="metric-badge"/>
+                <ui:Label name="ObjectValue" text="对象 --" class="metric-badge"/>
+                <ui:Label name="MemoryValue" text="内存 --" class="metric-badge"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

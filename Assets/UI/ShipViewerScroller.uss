@@ -1,0 +1,85 @@
+:root {
+    --sv-scroll-track: rgba(13, 14, 19, 0.24);
+    --sv-scroll-track-edge: rgba(255, 255, 255, 0.08);
+    --sv-scroll-thumb: rgba(227, 225, 233, 0.34);
+    --sv-scroll-thumb-hover: rgba(227, 225, 233, 0.60);
+    --sv-scroll-thumb-active: rgba(255, 246, 223, 0.78);
+}
+
+/*
+ * Shared scrollbar skin for ShipViewer.
+ * Strategy:
+ * 1) Keep the scroller in normal layout flow so its geometry stays stable.
+ * 2) Reserve a small content gutter on the right from the start.
+ * 3) Only style the inner dragger, never resize the outer slider container.
+ */
+.shipviewer-scrollable .unity-scroll-view__vertical-scroller,
+.shipviewer-scrollable .unity-scroller {
+    width: 10px;
+    min-width: 10px;
+    background-color: var(--sv-scroll-track);
+    border-left-width: 1px;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: var(--sv-scroll-track-edge);
+    flex-shrink: 0;
+}
+
+.shipviewer-scrollable .unity-scroller__low-button,
+.shipviewer-scrollable .unity-scroller__high-button {
+    display: none;
+    width: 0;
+    height: 0;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+}
+
+
+.shipviewer-scrollable .unity-scroller__slider {
+    background-color: transparent;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.shipviewer-scrollable .unity-base-slider__tracker,
+.shipviewer-scrollable .unity-scroller__drag-container {
+    background-color: transparent;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.shipviewer-scrollable .unity-base-slider__dragger {
+    width: 6px;
+    min-width: 6px;
+    background-color: var(--sv-scroll-thumb);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-width: 0;
+    transition-duration: 0.2s;
+}
+
+.shipviewer-scrollable .unity-base-slider__dragger:hover {
+    width: 6px;
+    min-width: 6px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: var(--sv-scroll-thumb-hover);
+}
+
+.shipviewer-scrollable .unity-base-slider__dragger:active {
+    width: 6px;
+    min-width: 6px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: var(--sv-scroll-thumb-active);
+}

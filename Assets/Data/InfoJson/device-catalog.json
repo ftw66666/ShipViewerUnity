@@ -1,0 +1,632 @@
+[
+  {
+    "model_name": "Circle.000",
+    "display_name": "车身清漆外壳",
+    "damage_leaf_id": "BODY_SHELL",
+    "image_path": "",
+    "material": "coat",
+    "thickness": "待补充",
+    "size": "2.653×1.574×5.859",
+    "function": "整车外表面清漆层与主体外壳。"
+  },
+  {
+    "model_name": "Circle.001",
+    "display_name": "车身喷涂外壳",
+    "damage_leaf_id": "BODY_SHELL",
+    "image_path": "",
+    "material": "paint",
+    "thickness": "待补充",
+    "size": "2.652×1.574×5.859",
+    "function": "整车主体喷涂表面。"
+  },
+  {
+    "model_name": "Cube.004",
+    "display_name": "车身主体框架",
+    "damage_leaf_id": "BODY_SHELL",
+    "image_path": "",
+    "material": "_black,930_plastics",
+    "thickness": "待补充",
+    "size": "2.561×1.598×5.710",
+    "function": "车身主体与大面积外壳结构。"
+  },
+  {
+    "model_name": "Circle.002",
+    "display_name": "前部覆盖件",
+    "damage_leaf_id": "BODY_FRONT",
+    "image_path": "",
+    "material": "paint",
+    "thickness": "待补充",
+    "size": "1.679×0.508×1.740",
+    "function": "位于车头区域的喷涂覆盖件。"
+  },
+  {
+    "model_name": "Circle.041",
+    "display_name": "前风挡玻璃",
+    "damage_leaf_id": "WINDOW_FRONT",
+    "image_path": "",
+    "material": "glass",
+    "thickness": "待补充",
+    "size": "1.848×0.537×0.744",
+    "function": "驾驶舱前方主要透视玻璃。"
+  },
+  {
+    "model_name": "Circle.012",
+    "display_name": "侧窗玻璃总成",
+    "damage_leaf_id": "WINDOW_SIDE",
+    "image_path": "",
+    "material": "glass",
+    "thickness": "待补充",
+    "size": "1.927×0.456×2.069",
+    "function": "驾驶舱中部侧向玻璃区域。"
+  },
+  {
+    "model_name": "Circle.018",
+    "display_name": "后窗玻璃",
+    "damage_leaf_id": "WINDOW_REAR",
+    "image_path": "",
+    "material": "glass",
+    "thickness": "待补充",
+    "size": "1.410×0.368×0.912",
+    "function": "车尾后向观察玻璃。"
+  },
+  {
+    "model_name": "Circle.005",
+    "display_name": "前灯主发光件",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "2.067×0.715×0.425",
+    "function": "前部主要灯光发光体。"
+  },
+  {
+    "model_name": "Circle.006",
+    "display_name": "左前辅助灯件",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.214×0.066×0.146",
+    "function": "左前侧小型灯光构件。"
+  },
+  {
+    "model_name": "Circle.011",
+    "display_name": "左前灯组件",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.350×0.447×1.788",
+    "function": "左前主灯体。"
+  },
+  {
+    "model_name": "Circle.017",
+    "display_name": "右前灯组件",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.350×0.447×1.788",
+    "function": "右前主灯体。"
+  },
+  {
+    "model_name": "Circle.035",
+    "display_name": "前灯细节件",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.026×0.062×0.072",
+    "function": "前灯局部发光细节。"
+  },
+  {
+    "model_name": "Circle.036",
+    "display_name": "前灯透镜罩",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights_refraction",
+    "thickness": "待补充",
+    "size": "2.066×0.711×0.424",
+    "function": "前灯透明折射罩壳。"
+  },
+  {
+    "model_name": "Plane.009",
+    "display_name": "前灯反射与扩散面",
+    "damage_leaf_id": "LIGHT_FRONT",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "2.506×0.749×3.980",
+    "function": "前灯内部反射和扩散面。"
+  },
+  {
+    "model_name": "Circle.007",
+    "display_name": "右后辅助灯件",
+    "damage_leaf_id": "LIGHT_REAR",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.101×0.038×0.005",
+    "function": "右后侧小型灯光构件。"
+  },
+  {
+    "model_name": "Circle.008",
+    "display_name": "后灯主发光件",
+    "damage_leaf_id": "LIGHT_REAR",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "2.008×0.446×0.481",
+    "function": "后部主要灯光发光体。"
+  },
+  {
+    "model_name": "Circle.025",
+    "display_name": "左后辅助灯件",
+    "damage_leaf_id": "LIGHT_REAR",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.101×0.038×0.005",
+    "function": "左后侧小型灯光构件。"
+  },
+  {
+    "model_name": "Cube.003",
+    "display_name": "后灯小型发光块",
+    "damage_leaf_id": "LIGHT_REAR",
+    "image_path": "",
+    "material": "930_lights",
+    "thickness": "待补充",
+    "size": "0.110×0.085×0.044",
+    "function": "后部局部发光灯块。"
+  },
+  {
+    "model_name": "Circle.030",
+    "display_name": "前部镀铬小件 A",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.046×0.040×0.047",
+    "function": "车头区域镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.033",
+    "display_name": "前部镀铬小件 B",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.195×0.013×0.137",
+    "function": "车头区域镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.056",
+    "display_name": "前部镀铬小件 C",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.207×0.068×0.149",
+    "function": "车头区域镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.060",
+    "display_name": "前部镀铬装饰罩",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.278×0.291×0.207",
+    "function": "车头区域镀铬罩壳。"
+  },
+  {
+    "model_name": "Cylinder.006",
+    "display_name": "前部竖向镀铬件",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.164×1.165×0.146",
+    "function": "前部竖向金属装饰件。"
+  },
+  {
+    "model_name": "Plane.004",
+    "display_name": "前部横向镀铬饰条",
+    "damage_leaf_id": "CHROME_FRONT",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "2.281×0.729×0.278",
+    "function": "前脸区域横向镀铬饰条。"
+  },
+  {
+    "model_name": "Circle.003",
+    "display_name": "后部镀铬小件 A",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.342×0.015×0.283",
+    "function": "车尾区域镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.009",
+    "display_name": "后部镀铬小件 B",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.327×0.106×0.283",
+    "function": "车尾区域镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.010",
+    "display_name": "后部镀铬饰条",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.634×0.125×0.041",
+    "function": "车尾区域横向镀铬装饰。"
+  },
+  {
+    "model_name": "Circle.020",
+    "display_name": "后窗镀铬锁点",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.054×0.009×0.017",
+    "function": "后窗附近镀铬小构件。"
+  },
+  {
+    "model_name": "Circle.024",
+    "display_name": "后窗镀铬包边",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.698×0.320×0.757",
+    "function": "后窗周边镀铬包边。"
+  },
+  {
+    "model_name": "Circle.061",
+    "display_name": "后部镀铬连接件",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.184×0.107×0.278",
+    "function": "车尾区域镀铬连接件。"
+  },
+  {
+    "model_name": "Cube.010",
+    "display_name": "后部镀铬支架",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.114×0.085×0.064",
+    "function": "车尾局部镀铬支架。"
+  },
+  {
+    "model_name": "Cylinder.009",
+    "display_name": "后部镀铬总成",
+    "damage_leaf_id": "CHROME_REAR",
+    "image_path": "",
+    "material": "930_chromes,_black",
+    "thickness": "待补充",
+    "size": "1.580×0.477×1.352",
+    "function": "车尾中部镀铬与黑色组合构件。"
+  },
+  {
+    "model_name": "Cube",
+    "display_name": "中部镀铬饰件",
+    "damage_leaf_id": "CHROME_SIDE",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.291×0.083×0.035",
+    "function": "车身中部镀铬装饰件。"
+  },
+  {
+    "model_name": "Cube.006",
+    "display_name": "侧面镀铬饰条",
+    "damage_leaf_id": "CHROME_SIDE",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.214×0.143×0.050",
+    "function": "车身侧面镀铬装饰条。"
+  },
+  {
+    "model_name": "Plane",
+    "display_name": "中部镀铬片",
+    "damage_leaf_id": "CHROME_SIDE",
+    "image_path": "",
+    "material": "930_chromes",
+    "thickness": "待补充",
+    "size": "0.008×0.025×0.025",
+    "function": "车身中部小型镀铬薄片。"
+  },
+  {
+    "model_name": "Circle.040",
+    "display_name": "前部塑料罩壳",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "1.692×0.473×1.703",
+    "function": "车头区域塑料罩壳。"
+  },
+  {
+    "model_name": "Cube.007",
+    "display_name": "前部塑料构件",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics,930_chromes",
+    "thickness": "待补充",
+    "size": "1.536×0.187×0.437",
+    "function": "前部塑料与镀铬组合件。"
+  },
+  {
+    "model_name": "Cylinder.000",
+    "display_name": "左前塑料件",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.468×0.160×0.262",
+    "function": "左前区域塑料构件。"
+  },
+  {
+    "model_name": "Cylinder.003",
+    "display_name": "前部圆柱塑料件",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.523×0.151×0.202",
+    "function": "前部圆柱型塑料构件。"
+  },
+  {
+    "model_name": "Plane.001",
+    "display_name": "左前塑料导流片",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.525×0.076×0.301",
+    "function": "前部局部塑料导流片。"
+  },
+  {
+    "model_name": "Plane.007",
+    "display_name": "前部塑料小面片",
+    "damage_leaf_id": "PLASTIC_FRONT",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.280×0.048×0.068",
+    "function": "前部小型塑料面片。"
+  },
+  {
+    "model_name": "Circle.004",
+    "display_name": "后部黑色塑料件",
+    "damage_leaf_id": "PLASTIC_REAR",
+    "image_path": "",
+    "material": "_black",
+    "thickness": "待补充",
+    "size": "0.103×0.041×0.008",
+    "function": "车尾黑色塑料小构件。"
+  },
+  {
+    "model_name": "Circle.027",
+    "display_name": "后部塑料罩壳",
+    "damage_leaf_id": "PLASTIC_REAR",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "1.266×0.176×0.611",
+    "function": "车尾区域塑料罩壳。"
+  },
+  {
+    "model_name": "Cube.009",
+    "display_name": "后部塑料支架",
+    "damage_leaf_id": "PLASTIC_REAR",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.131×0.120×0.073",
+    "function": "车尾局部塑料支架。"
+  },
+  {
+    "model_name": "Plane.002",
+    "display_name": "后部塑料挡片",
+    "damage_leaf_id": "PLASTIC_REAR",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.024×0.134×0.283",
+    "function": "后部塑料挡片。"
+  },
+  {
+    "model_name": "Plane.011",
+    "display_name": "后部塑料小片",
+    "damage_leaf_id": "PLASTIC_REAR",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "0.198×0.039×0.037",
+    "function": "车尾局部塑料小面片。"
+  },
+  {
+    "model_name": "Circle.026",
+    "display_name": "侧面塑料包覆件",
+    "damage_leaf_id": "PLASTIC_SIDE",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "1.818×1.582×6.010",
+    "function": "车身侧面和轮拱周边塑料包覆件。"
+  },
+  {
+    "model_name": "Cylinder.002",
+    "display_name": "中部塑料大总成",
+    "damage_leaf_id": "PLASTIC_SIDE",
+    "image_path": "",
+    "material": "930_plastics",
+    "thickness": "待补充",
+    "size": "3.627×1.827×3.346",
+    "function": "车身中部大型塑料构件。"
+  },
+  {
+    "model_name": "Circle.014",
+    "display_name": "前部品牌贴花",
+    "damage_leaf_id": "DECAL_FRONT",
+    "image_path": "",
+    "material": "930_stickers",
+    "thickness": "待补充",
+    "size": "0.124×0.034×0.061",
+    "function": "车头区域贴花或标识。"
+  },
+  {
+    "model_name": "Plane.010",
+    "display_name": "前部牌照/标识片",
+    "damage_leaf_id": "DECAL_FRONT",
+    "image_path": "",
+    "material": "930_plastics,930_stickers",
+    "thickness": "待补充",
+    "size": "0.067×0.041×0.078",
+    "function": "车头局部标识或牌照定位片。"
+  },
+  {
+    "model_name": "Plane.013",
+    "display_name": "前牌照区域",
+    "damage_leaf_id": "DECAL_FRONT",
+    "image_path": "",
+    "material": "930_plastics,930_stickers,plate",
+    "thickness": "待补充",
+    "size": "0.650×0.187×0.077",
+    "function": "车头牌照安装与显示区域。"
+  },
+  {
+    "model_name": "Circle.013",
+    "display_name": "后部贴花 A",
+    "damage_leaf_id": "DECAL_REAR",
+    "image_path": "",
+    "material": "930_stickers",
+    "thickness": "待补充",
+    "size": "0.134×0.043×0.037",
+    "function": "车尾区域装饰贴花。"
+  },
+  {
+    "model_name": "Circle.016",
+    "display_name": "后部贴花 B",
+    "damage_leaf_id": "DECAL_REAR",
+    "image_path": "",
+    "material": "930_stickers",
+    "thickness": "待补充",
+    "size": "0.197×0.084×0.154",
+    "function": "车尾区域装饰贴花。"
+  },
+  {
+    "model_name": "Circle.031",
+    "display_name": "后部品牌标识",
+    "damage_leaf_id": "DECAL_REAR",
+    "image_path": "",
+    "material": "930_stickers",
+    "thickness": "待补充",
+    "size": "0.235×0.017×0.045",
+    "function": "车尾中部品牌标识。"
+  },
+  {
+    "model_name": "Plane.003",
+    "display_name": "后牌照区域",
+    "damage_leaf_id": "DECAL_REAR",
+    "image_path": "",
+    "material": "930_plastics,930_stickers,plate",
+    "thickness": "待补充",
+    "size": "0.650×0.190×0.020",
+    "function": "车尾牌照安装与显示区域。"
+  },
+  {
+    "model_name": "Circle.034",
+    "display_name": "车身装饰贴花",
+    "damage_leaf_id": "DECAL_BODY",
+    "image_path": "",
+    "material": "930_stickers",
+    "thickness": "待补充",
+    "size": "1.833×0.046×0.265",
+    "function": "车身中部条形装饰贴花。"
+  },
+  {
+    "model_name": "Circle.051",
+    "display_name": "左前轮胎总成",
+    "damage_leaf_id": "WHEEL_FRONT_LEFT",
+    "image_path": "",
+    "material": "930_rim,930_tire",
+    "thickness": "待补充",
+    "size": "0.692×1.194×1.237",
+    "function": "左前轮胎与轮毂总成。"
+  },
+  {
+    "model_name": "Circle.048",
+    "display_name": "左前轮毂细节",
+    "damage_leaf_id": "WHEEL_FRONT_LEFT",
+    "image_path": "",
+    "material": "930_rim",
+    "thickness": "待补充",
+    "size": "0.054×0.074×0.099",
+    "function": "左前轮毂局部细节件。"
+  },
+  {
+    "model_name": "Circle.037",
+    "display_name": "右前轮胎总成",
+    "damage_leaf_id": "WHEEL_FRONT_RIGHT",
+    "image_path": "",
+    "material": "930_rim,930_tire",
+    "thickness": "待补充",
+    "size": "0.690×1.187×1.231",
+    "function": "右前轮胎与轮毂总成。"
+  },
+  {
+    "model_name": "Circle.050",
+    "display_name": "左后轮胎总成",
+    "damage_leaf_id": "WHEEL_REAR_LEFT",
+    "image_path": "",
+    "material": "930_rim,930_tire",
+    "thickness": "待补充",
+    "size": "0.379×1.188×1.188",
+    "function": "左后轮胎与轮毂总成。"
+  },
+  {
+    "model_name": "Circle.038",
+    "display_name": "右后轮胎总成",
+    "damage_leaf_id": "WHEEL_REAR_RIGHT",
+    "image_path": "",
+    "material": "930_rim,930_tire",
+    "thickness": "待补充",
+    "size": "0.379×1.188×1.188",
+    "function": "右后轮胎与轮毂总成。"
+  },
+  {
+    "model_name": "Plane.015",
+    "display_name": "底部面板",
+    "damage_leaf_id": "UNDERBODY_PANEL",
+    "image_path": "",
+    "material": "Lit",
+    "thickness": "待补充",
+    "size": "3.836×0.000×7.672",
+    "function": "车辆底部大面积面板。"
+  },
+  {
+    "model_name": "Plane.005",
+    "display_name": "内饰挂件",
+    "damage_leaf_id": "INTERIOR_TAG",
+    "image_path": "",
+    "material": "930_wunderbaum",
+    "thickness": "待补充",
+    "size": "0.069×0.211×0.033",
+    "function": "悬挂在驾驶舱内部的装饰挂件。"
+  }
+]

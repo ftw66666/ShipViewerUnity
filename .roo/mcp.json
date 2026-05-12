@@ -1,0 +1,48 @@
+{
+	"mcpServers": {
+		"filesystem": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-filesystem",
+				"G:/unityprojects/MyGame/My project/Assets/Scripts"
+			],
+			"alwaysAllow": [
+				"list_directory",
+				"create_directory",
+				"get_file_info",
+				"list_allowed_directories",
+				"read_multiple_files"
+			],
+			"disabled": false
+		},
+		"unityMCP": {
+			"type": "streamable-http",
+			"url": "http://localhost:6657/mcp",
+			"disabled": false,
+			"alwaysAllow": [
+				"manage_scene",
+				"validate_script",
+				"manage_asset",
+				"execute_custom_tool",
+				"unity_reflect",
+				"create_script",
+				"find_gameobjects"
+			],
+			"disabledTools": [
+				"get_test_job",
+				"script_apply_edits",
+				"run_tests",
+				"set_active_instance",
+				"refresh_unity",
+				"read_console",
+				"manage_vfx",
+				"manage_texture",
+				"manage_shader",
+				"manage_scriptable_object",
+				"get_sha",
+				"manage_script_capabilities"
+			]
+		}
+	}
+}
