@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.3050701">
+  <test-suite type="TestSuite" id="1021" name="ShipViewerUnity" fullname="ShipViewerUnity" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.305070" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1007" name="Assembly-CSharp-Editor.dll" fullname="G:/unityprojects/ShipViewerUnity/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.296001" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="23868" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1008" name="ShipViewer" fullname="ShipViewer" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.295578" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1009" name="Tests" fullname="ShipViewer.Tests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.295322" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1010" name="Editor" fullname="ShipViewer.Tests.Editor" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.295123" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1001" name="ShipCameraDiagnosticTests" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:39Z" duration="2.294037" total="5" passed="3" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1006" name="CameraModeManager_RuntimeReferencesCanBeResolvedEvenWhenInspectorFieldsAreEmpty" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.CameraModeManager_RuntimeReferencesCanBeResolvedEvenWhenInspectorFieldsAreEmpty" methodname="CameraModeManager_RuntimeReferencesCanBeResolvedEvenWhenInspectorFieldsAreEmpty" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" seed="498953090" result="Passed" start-time="2026-05-20 09:55:37Z" end-time="2026-05-20 09:55:38Z" duration="0.825330" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[ShipCameraDiagnosticTests] SerializedOverview=<null>, SerializedFocus=<null>, SerializedBrain=<null>, SerializedOutput=<null>
+[ShipCameraDiagnosticTests] 说明：这些 Inspector 引用当前可以为空，因为现有代码在 Awake/OnEnable 中会自动解析；若运行时日志显示解析失败，再回到此项检查对象命名/组件是否被删除。
+]]></output>
+              </test-case>
+              <test-case id="1002" name="CameraPipeline_RequiredComponentsExistAndTargetsAreResolvable" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.CameraPipeline_RequiredComponentsExistAndTargetsAreResolvable" methodname="CameraPipeline_RequiredComponentsExistAndTargetsAreResolvable" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" seed="1373284976" result="Passed" start-time="2026-05-20 09:55:38Z" end-time="2026-05-20 09:55:38Z" duration="0.348763" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[ShipCameraDiagnosticTests] MainCamera=Main Camera, Position=(-5.13, 3.38, 5.13), Brain=Main Camera
+[ShipCameraDiagnosticTests] Overview=CameraRig, Follow=Ship, Radius=8, H=135, V=25, R=1
+]]></output>
+              </test-case>
+              <test-case id="1005" name="ImportedShip_HasCollidersForRaycastSelectionWorkflow" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.ImportedShip_HasCollidersForRaycastSelectionWorkflow" methodname="ImportedShip_HasCollidersForRaycastSelectionWorkflow" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" seed="622943806" result="Failed" start-time="2026-05-20 09:55:38Z" end-time="2026-05-20 09:55:38Z" duration="0.374214" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  导入模型下没有任何 Collider，但当前选择脚本使用 Physics.Raycast。RendererCount=10063，ColliderCount=0。
+  Expected: greater than 0
+  But was:  0
+]]></message>
+                  <stack-trace><![CDATA[at ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.ImportedShip_HasCollidersForRaycastSelectionWorkflow () [0x0003d] in G:\unityprojects\ShipViewerUnity\Assets\Tests\Editor\ShipCameraDiagnosticTests.cs:122
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[ShipCameraDiagnosticTests] RendererCount=10063, ColliderCount=0
+[ShipCameraDiagnosticTests] 诊断标准：ShipPartSelectionController 依赖 Physics.Raycast；如果导入的 1wObject 模型没有 Collider，模型点击/射线选择会失效。该项是选择链路的独立风险，不等同于 UI 本身故障。
+]]></output>
+              </test-case>
+              <test-case id="1003" name="ImportedShipGeometry_IsFiniteAndReportsScaleMetrics" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.ImportedShipGeometry_IsFiniteAndReportsScaleMetrics" methodname="ImportedShipGeometry_IsFiniteAndReportsScaleMetrics" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" seed="1140247165" result="Passed" start-time="2026-05-20 09:55:38Z" end-time="2026-05-20 09:55:39Z" duration="0.370844" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[ShipCameraDiagnosticTests] ShipTransforms=10068, Renderers=10063
+[ShipCameraDiagnosticTests] ShipBoundsCenter=(0.10, 0.11, 0.04), ShipBoundsSize=(43.88, 5.43, 43.91), BoundsExtentsMagnitude=31.157
+]]></output>
+              </test-case>
+              <test-case id="1004" name="OverviewCameraOrbitDistance_IsLargeEnoughForImportedShipBounds" fullname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.OverviewCameraOrbitDistance_IsLargeEnoughForImportedShipBounds" methodname="OverviewCameraOrbitDistance_IsLargeEnoughForImportedShipBounds" classname="ShipViewer.Tests.Editor.ShipCameraDiagnosticTests" runstate="Runnable" seed="1627834715" result="Failed" start-time="2026-05-20 09:55:39Z" end-time="2026-05-20 09:55:39Z" duration="0.364018" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  总览相机距离过小：CurrentOrbitDistance=8，但导入模型 BoundsRadius=31.157。这会让主相机落在约 43.88x5.43x43.91 的大型模型内部或近距离区域，是‘相机在转但看起来不动/无法正常观察’的直接原因。
+  Expected: greater than or equal to 31.1568375f
+  But was:  8.0f
+]]></message>
+                  <stack-trace><![CDATA[at ShipViewer.Tests.Editor.ShipCameraDiagnosticTests.OverviewCameraOrbitDistance_IsLargeEnoughForImportedShipBounds () [0x00123] in G:\unityprojects\ShipViewerUnity\Assets\Tests\Editor\ShipCameraDiagnosticTests.cs:105
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[ShipCameraDiagnosticTests] ConfiguredBaseRadius=8, RuntimeOrbitRadius=8, RadialScale=1, CurrentOrbitDistance=8
+[ShipCameraDiagnosticTests] BoundsExtents=(21.94, 2.72, 21.96), BoundsRadius=31.157
+[ShipCameraDiagnosticTests] 诊断标准：总览相机环绕距离应至少大于模型包围球半径，否则输出相机处在导入模型内部/过近区域，表现为 CameraRig 角度变化但画面几乎不产生有效位移。
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/lenovo/AppData/LocalLow/DefaultCompany/ShipViewerUnity\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

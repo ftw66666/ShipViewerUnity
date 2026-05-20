@@ -43,6 +43,10 @@
                     <ui:Label text="当前选择" class="toast-label"/>
                     <ui:Label name="CurrentSelectionLabel" text="未选择模型或损伤节点" class="toast-value"/>
                 </ui:VisualElement>
+                <ui:VisualElement name="HoverTooltip" class="hover-tooltip">
+                    <ui:Label name="HoverTooltipDisplayName" text="" class="hover-tooltip-title"/>
+                    <ui:Label name="HoverTooltipModelName" text="" class="hover-tooltip-subtitle"/>
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="InfoPanel" class="hud-panel side-panel right-panel">
                 <ui:VisualElement class="panel-header">

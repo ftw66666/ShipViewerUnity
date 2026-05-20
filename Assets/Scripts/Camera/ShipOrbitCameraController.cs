@@ -504,14 +504,11 @@ public sealed class ShipOrbitCameraController : MonoBehaviour
     private bool HandleManualOrbitInput()
     {
         Vector2 screenPosition = Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
-        if (blockSceneInputWhenPointerOverUi && IsPointerBlockedByUI(screenPosition))
-        {
-            return false;
-        }
+        bool canOrbit = CanUseOrbitPointer();
+        bool isPointerBlockedByUi = blockSceneInputWhenPointerOverUi && IsPointerBlockedByUI(screenPosition);
 
         Vector2 lookDelta = ReadLookDelta();
-        float zoomDelta = ReadZoomDelta();
-        bool canOrbit = CanUseOrbitPointer();
+        float zoomDelta = isPointerBlockedByUi ? 0f : ReadZoomDelta();
         bool changed = false;
 
         if (canOrbit && lookDelta.sqrMagnitude > 0.000001f)

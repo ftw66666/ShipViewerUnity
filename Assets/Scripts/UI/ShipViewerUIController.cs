@@ -61,6 +61,9 @@ public sealed class ShipViewerUIController : MonoBehaviour
     private Label triangleValue;
     private Label objectValue;
     private Label memoryValue;
+    private VisualElement hoverTooltip;
+    private Label hoverTooltipDisplayName;
+    private Label hoverTooltipModelName;
 
     private readonly List<DamageTreeNode> allDamageNodes = new List<DamageTreeNode>();
     private readonly Dictionary<string, DamageTreeNode> damageNodeById = new Dictionary<string, DamageTreeNode>(StringComparer.OrdinalIgnoreCase);
@@ -166,7 +169,9 @@ public sealed class ShipViewerUIController : MonoBehaviour
                 current.name == "InfoPanel" ||
                 current.name == "PerformanceBar" ||
                 current.name == "DamageTreeContainer" ||
-                current.name == "InfoScroll")
+                current.name == "InfoScroll" ||
+                current.name == "DebugChildVisibilityPanel" ||
+                current.name == "DebugChildVisibilitySlider")
             {
                 return true;
             }
@@ -175,6 +180,87 @@ public sealed class ShipViewerUIController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void ShowHoverTooltip(string displayName, string modelName, Vector2 screenPosition)
+    {
+        if (hoverTooltip == null)
+        {
+            return;
+        }
+
+        SetText(hoverTooltipDisplayName, NonEmpty(displayName, "未命名对象"));
+        SetText(hoverTooltipModelName, NonEmpty(modelName, "--"));
+        hoverTooltip.style.display = DisplayStyle.Flex;
+        UpdateHoverTooltipPosition(screenPosition);
+    }
+
+    public void UpdateHoverTooltipPosition(Vector2 screenPosition)
+    {
+        if (hoverTooltip == null || root == null)
+        {
+            return;
+        }
+
+        const float offsetX = 14f;
+        const float offsetY = 18f;
+        const float fallbackWidth = 220f;
+        const float fallbackHeight = 56f;
+        const float margin = 12f;
+
+        float panelWidth = hoverTooltip.resolvedStyle.width > 1f ? hoverTooltip.resolvedStyle.width : fallbackWidth;
+        float panelHeight = hoverTooltip.resolvedStyle.height > 1f ? hoverTooltip.resolvedStyle.height : fallbackHeight;
+        float rootWidth = root.resolvedStyle.width;
+        float rootHeight = root.resolvedStyle.height;
+
+        float left = screenPosition.x + offsetX;
+        float top = screenPosition.y + offsetY;
+
+        if (left + panelWidth + margin > rootWidth)
+        {
+            left = Mathf.Max(margin, screenPosition.x - panelWidth - offsetX);
+        }
+
+        if (top + panelHeight + margin > rootHeight)
+        {
+            top = Mathf.Max(margin, screenPosition.y - panelHeight - offsetY);
+        }
+
+        hoverTooltip.style.left = left;
+        hoverTooltip.style.top = top;
+    }
+
+    public void HideHoverTooltip()
+    {
+        if (hoverTooltip == null)
+        {
+            return;
+        }
+
+        hoverTooltip.style.display = DisplayStyle.None;
+    }
+
+    public bool TryGetHoverTooltipContent(string modelName, out string displayName, out string secondaryModelName)
+    {
+        displayName = null;
+        secondaryModelName = null;
+        if (string.IsNullOrWhiteSpace(modelName))
+        {
+            return false;
+        }
+
+        string normalizedName = modelName.Trim();
+        secondaryModelName = normalizedName;
+
+        if (deviceByModelName.TryGetValue(normalizedName, out DeviceInfo info) && info != null)
+        {
+            displayName = NonEmpty(info.display_name, normalizedName);
+            secondaryModelName = NonEmpty(info.model_name, normalizedName);
+            return true;
+        }
+
+        displayName = normalizedName;
+        return true;
     }
 
     /// <summary>
@@ -222,6 +308,27 @@ public sealed class ShipViewerUIController : MonoBehaviour
 
         modelName = info.model_name.Trim();
         return true;
+    }
+
+    /// <summary>
+    /// 收集指定毁伤节点及其全部子孙节点关联的模型名称。
+    /// 用于外部高亮系统在选择父节点时同时高亮所有子节点模型。
+    /// </summary>
+    public bool TryGetModelNamesByDamageNodeHierarchy(string damageNodeId, List<string> modelNames)
+    {
+        if (modelNames == null || string.IsNullOrWhiteSpace(damageNodeId))
+        {
+            return false;
+        }
+
+        if (!damageNodeById.TryGetValue(damageNodeId.Trim(), out DamageTreeNode node) || node == null)
+        {
+            return false;
+        }
+
+        int startCount = modelNames.Count;
+        AppendModelNamesByDamageNodeHierarchy(node, modelNames);
+        return modelNames.Count > startCount;
     }
 
     /// <summary>
@@ -359,6 +466,30 @@ public sealed class ShipViewerUIController : MonoBehaviour
         SetText(currentSelectionLabel, string.IsNullOrWhiteSpace(message) ? "未选择模型或损伤节点" : message);
     }
 
+    public void ClearCurrentSelection()
+    {
+        selectedDamageNode = null;
+        selectedDeviceInfo = null;
+
+        foreach (VisualElement selectedRow in selectedTreeRows)
+        {
+            if (selectedRow == null)
+            {
+                continue;
+            }
+
+            selectedRow.RemoveFromClassList("damage-tree-row-selected");
+            selectedRow.RemoveFromClassList("damage-tree-row-ancestor");
+            selectedRow.RemoveFromClassList("damage-tree-row-hovered");
+            selectedRow.RemoveFromClassList("damage-tree-row-pressed");
+        }
+
+        selectedTreeRows.Clear();
+        RefreshDamageTreeListView();
+        ResetInfoPanelToUnselectedState();
+        SetCurrentSelection(null);
+    }
+
     private void BindVisualElements()
     {
         root = uiDocument != null ? uiDocument.rootVisualElement : null;
@@ -393,17 +524,20 @@ public sealed class ShipViewerUIController : MonoBehaviour
         triangleValue = root.Q<Label>("TriangleValue");
         objectValue = root.Q<Label>("ObjectValue");
         memoryValue = root.Q<Label>("MemoryValue");
+        hoverTooltip = root.Q<VisualElement>("HoverTooltip");
+        hoverTooltipDisplayName = root.Q<Label>("HoverTooltipDisplayName");
+        hoverTooltipModelName = root.Q<Label>("HoverTooltipModelName");
     }
 
     private void RegisterToolbarCallbacks()
     {
         RegisterToolbarButton("OpenButton", "open");
         RegisterResetAsIsometricButton("ResetButton");
-        RegisterToolbarButton("WireframeButton", "wireframe");
+        HideToolbarButton("WireframeButton");
         RegisterToolbarButton("DebugButton", "debug");
-        RegisterToolbarButton("PerformanceButton", "performance");
-        RegisterToolbarButton("AnimationButton", "animation");
-        RegisterToolbarButton("ScreenshotButton", "screenshot");
+        HideToolbarButton("PerformanceButton");
+        HideToolbarButton("AnimationButton");
+        HideToolbarButton("ScreenshotButton");
         RegisterToolbarButton("ClearButton", "clear");
         RegisterViewModeButton("FrontViewButton", "前视");
         RegisterViewModeButton("TopViewButton", "俯视");
@@ -455,13 +589,28 @@ public sealed class ShipViewerUIController : MonoBehaviour
 
         button.clicked += () =>
         {
+            bool isClearAction = string.Equals(actionId, "clear", StringComparison.OrdinalIgnoreCase);
+            if (isClearAction)
+            {
+                ClearCurrentSelection();
+            }
+
             ToolbarActionRequested?.Invoke(actionId);
-            SetLoadStatus($"工具栏动作：{actionId}");
+            SetLoadStatus(isClearAction ? "已清空当前选择" : $"工具栏动作：{actionId}");
             if (logInterfaceEvents)
             {
                 Debug.Log($"[ShipViewerUI] ToolbarActionRequested: {actionId}");
             }
         };
+    }
+
+    private void HideToolbarButton(string buttonName)
+    {
+        Button button = root?.Q<Button>(buttonName);
+        if (button != null)
+        {
+            button.style.display = DisplayStyle.None;
+        }
     }
 
     private void RegisterResetAsIsometricButton(string buttonName)
@@ -476,10 +625,12 @@ public sealed class ShipViewerUIController : MonoBehaviour
         {
             SetActiveViewMode("等轴测");
             ViewModeChanged?.Invoke("等轴测");
-            SetLoadStatus("视角切换：等轴测");
+            ClearCurrentSelection();
+            ToolbarActionRequested?.Invoke("reset");
+            SetLoadStatus("已重置：等轴测并清空选择");
             if (logInterfaceEvents)
             {
-                Debug.Log("[ShipViewerUI] ResetButton remapped to isometric view.");
+                Debug.Log("[ShipViewerUI] ResetButton remapped to isometric view and cleared selection.");
             }
         };
     }
@@ -738,6 +889,7 @@ public sealed class ShipViewerUIController : MonoBehaviour
     private VisualElement MakeDamageTreeButton()
     {
         Button row = new Button();
+        RegisterDamageTreeButtonInteractionCallbacks(row);
         row.clicked += () =>
         {
             if (row.userData is DamageTreeRow damageTreeRow)
@@ -747,6 +899,20 @@ public sealed class ShipViewerUIController : MonoBehaviour
         };
 
         return row;
+    }
+
+    /// <summary>
+    /// 注册损伤树节点的交互状态回调。
+    /// 说明：损伤树节点会在 C# 中写入行内样式，USS 的 :hover / :active 容易被行内样式覆盖；
+    /// 因此这里用 Pointer 事件同步写入悬浮/按下样式，确保“整车”“车身外观”等系统节点也有明确反馈。
+    /// </summary>
+    private void RegisterDamageTreeButtonInteractionCallbacks(Button row)
+    {
+        row.RegisterCallback<PointerEnterEvent>(_ => ApplyDamageTreeRowInteractionStyles(row, true, false));
+        row.RegisterCallback<PointerLeaveEvent>(_ => ApplyDamageTreeRowInteractionStyles(row, false, false));
+        row.RegisterCallback<PointerDownEvent>(_ => ApplyDamageTreeRowInteractionStyles(row, true, true));
+        row.RegisterCallback<PointerUpEvent>(_ => ApplyDamageTreeRowInteractionStyles(row, true, false));
+        row.RegisterCallback<PointerCancelEvent>(_ => ApplyDamageTreeRowInteractionStyles(row, false, false));
     }
 
     private void BindDamageTreeButton(VisualElement element, int index)
@@ -771,6 +937,8 @@ public sealed class ShipViewerUIController : MonoBehaviour
         row.EnableInClassList("damage-tree-row-ancestor", isAncestor);
         ApplyDamageTreeRowBaseStyles(row, node, isExpanded);
         ApplyDamageTreeRowStateStyles(row, isSelected, isAncestor);
+        row.RemoveFromClassList("damage-tree-row-hovered");
+        row.RemoveFromClassList("damage-tree-row-pressed");
     }
 
     private void OnDamageTreeButtonClicked(DamageTreeNode node)
@@ -965,6 +1133,60 @@ public sealed class ShipViewerUIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 应用损伤树节点的悬浮/按下样式。
+    /// 按下态优先级最高，悬浮态次之，默认态会回退到选中/祖先/普通节点样式。
+    /// </summary>
+    private void ApplyDamageTreeRowInteractionStyles(Button row, bool isHovered, bool isPressed)
+    {
+        if (row == null || !(row.userData is DamageTreeRow damageTreeRow) || damageTreeRow.node == null)
+        {
+            return;
+        }
+
+        DamageTreeNode node = damageTreeRow.node;
+        bool isExpanded = IsDamageNodeExpanded(node);
+        bool isSelected = selectedDamageNode != null && string.Equals(selectedDamageNode.nodeId, node.nodeId, StringComparison.OrdinalIgnoreCase);
+        bool isAncestor = !isSelected && IsAncestorOfSelectedNode(node);
+
+        ApplyDamageTreeRowBaseStyles(row, node, isExpanded);
+        ApplyDamageTreeRowStateStyles(row, isSelected, isAncestor);
+
+        row.EnableInClassList("damage-tree-row-hovered", isHovered && !isPressed);
+        row.EnableInClassList("damage-tree-row-pressed", isPressed);
+
+        if (isPressed)
+        {
+            ApplyDamageTreeRowPressedStyles(row);
+            return;
+        }
+
+        if (isHovered)
+        {
+            ApplyDamageTreeRowHoverStyles(row);
+        }
+    }
+
+    private void ApplyDamageTreeRowHoverStyles(VisualElement row)
+    {
+        row.style.backgroundColor = new StyleColor(new Color(0.220f, 0.224f, 0.247f, 0.56f));
+        row.style.color = new StyleColor(new Color(1f, 0.965f, 0.875f, 1f));
+        row.style.borderLeftColor = new StyleColor(new Color(0f, 0.890f, 0.992f, 0.38f));
+        row.style.borderRightColor = new StyleColor(new Color(0f, 0.890f, 0.992f, 0.38f));
+        row.style.borderTopColor = new StyleColor(new Color(0f, 0.890f, 0.992f, 0.38f));
+        row.style.borderBottomColor = new StyleColor(new Color(0f, 0.890f, 0.992f, 0.38f));
+    }
+
+    private void ApplyDamageTreeRowPressedStyles(VisualElement row)
+    {
+        row.style.backgroundColor = new StyleColor(new Color(0f, 0.890f, 0.992f, 0.18f));
+        row.style.color = new StyleColor(new Color(1f, 0.965f, 0.875f, 1f));
+        row.style.borderLeftColor = new StyleColor(new Color(1f, 0.965f, 0.875f, 0.78f));
+        row.style.borderRightColor = new StyleColor(new Color(1f, 0.965f, 0.875f, 0.78f));
+        row.style.borderTopColor = new StyleColor(new Color(1f, 0.965f, 0.875f, 0.78f));
+        row.style.borderBottomColor = new StyleColor(new Color(1f, 0.965f, 0.875f, 0.78f));
+    }
+
     private void SelectDamageNode(DamageTreeNode node, VisualElement rowElement, bool triggerFocus, bool refreshInfoPanel)
     {
         if (node == null)
@@ -1100,6 +1322,23 @@ public sealed class ShipViewerUIController : MonoBehaviour
         }
     }
 
+    private void ResetInfoPanelToUnselectedState()
+    {
+        SetText(infoSourceBadge, "等待选择");
+        SetText(deviceNameLabel, "未选择节点");
+        SetText(deviceIdLabel, "节点ID：--");
+        SetText(parentNodeValue, "父节点ID：--");
+        SetText(materialValue, "--");
+        SetText(thicknessValue, "--");
+        SetText(sizeValue, "--");
+        SetText(functionValue, "--");
+        SetText(infoEmptyState, "数据来自 device-catalog.json；未匹配时会显示空状态，不中断交互。");
+        if (deviceImage != null)
+        {
+            deviceImage.image = null;
+        }
+    }
+
     private void ShowEmptyDeviceState(string message, string source)
     {
         selectedDeviceInfo = null;
@@ -1138,6 +1377,38 @@ public sealed class ShipViewerUIController : MonoBehaviour
         }
 
         return primaryDeviceByDamageNodeId.TryGetValue(damageNodeId.Trim(), out info) && info != null;
+    }
+
+    private void AppendModelNamesByDamageNodeHierarchy(DamageTreeNode node, List<string> modelNames)
+    {
+        if (node == null || modelNames == null)
+        {
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(node.nodeId) &&
+            devicesByDamageLeafId.TryGetValue(node.nodeId.Trim(), out List<DeviceInfo> devices) &&
+            devices != null)
+        {
+            foreach (DeviceInfo device in devices)
+            {
+                if (device == null || string.IsNullOrWhiteSpace(device.model_name))
+                {
+                    continue;
+                }
+
+                string modelName = device.model_name.Trim();
+                if (!modelNames.Contains(modelName, StringComparer.OrdinalIgnoreCase))
+                {
+                    modelNames.Add(modelName);
+                }
+            }
+        }
+
+        foreach (DamageTreeNode child in node.children)
+        {
+            AppendModelNamesByDamageNodeHierarchy(child, modelNames);
+        }
     }
 
     private bool IsAncestorOfSelectedNode(DamageTreeNode node)

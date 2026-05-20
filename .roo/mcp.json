@@ -25,9 +25,12 @@
 				"validate_script",
 				"manage_asset",
 				"execute_custom_tool",
-				"unity_reflect",
 				"create_script",
-				"find_gameobjects"
+				"find_gameobjects",
+				"unity_reflect",
+				"manage_gameobject",
+				"execute_menu_item",
+				"manage_components"
 			],
 			"disabledTools": [
 				"get_test_job",
